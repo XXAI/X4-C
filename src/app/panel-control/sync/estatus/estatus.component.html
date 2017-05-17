@@ -1,0 +1,34 @@
+<panel-control-menu></panel-control-menu>
+<div style="height:50px;"></div>
+<div class="contenedor columns " style="height:100%">
+    <div class="column is-one-quarter is-hidden-mobile">
+        <panel-control-menu-aside></panel-control-menu-aside>
+    </div>
+    <div class="column" style="padding:2em;">
+        <div style="background: #FFF; border-radius: 1em; overflow: hidden;">
+            <section class="hero is-primary">
+                <div class="hero-body">
+                    <div class="container is-fluid">
+                        <h1 class="title">
+                            <span  *ngIf="!cargando" class="icon is-medium"><i class="fa fa-server"></i></span>
+                            <span  *ngIf="cargando" class="icon is-medium"><i class="fa fa-refresh fa-spin"></i></span> 
+                            Estatus del servidor
+                        </h1>
+                        
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h1 class="title">Próximamente</h1>
+                <p>En esta sección se desplegarán varias opciones cuando tengamos muchos servidores.</p>
+            </section>
+        </div>
+        
+       
+       
+    </div>
+</div>
+
+
+
+

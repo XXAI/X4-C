@@ -1,0 +1,24 @@
+<aside class="menu" style="padding: 1em;">
+    <p class="menu-label">
+        Admisión
+    </p>
+    <a routerLink="/almacen/pedidos/nuevo" routerLinkActive="is-active" class="button is-primary is-inverted is-medium is-fullwidth" ><span class="icon"  ><i class="fa fa-plus"></i></span> <span>Nuevo Ingreso</span></a>
+    <br>
+
+    <ul class="menu-list">        
+        <li>
+            <a routerLink="/almacen/pedidos/borradores" #borradores  routerLinkActive="is-active">
+                <span class="icon"  ><i class="fa fa-hospital-o"></i></span> Ingresos
+                <span class="icon is-pulled-right" *ngIf="cargando"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                <!--<span *ngIf="stats.borradores>0" class="tag is-pulled-right" [ngClass]="{ 'is-white': borradores.className == 'is-active', 'is-primary': borradores.className != 'is-active' }" >{{  stats.borradores }}</span>-->
+            </a>
+        </li>        
+        <li>
+            <a routerLink="/almacen/pedidos/en-transito" #enTransito routerLinkActive="is-active">
+                <span class="icon"  ><i class="fa fa-arrow-right"></i></span> Egresos 
+                <span class="icon is-pulled-right" *ngIf="cargando"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                <!--<span *ngIf="stats.en_transito>0" class="tag is-pulled-right" [ngClass]="{ 'is-white': enTransito.className == 'is-active', 'is-primary': enTransito.className != 'is-active' }" >{{  stats.en_transito }}</span>-->
+            </a>
+        </li>   
+    </ul>        
+</aside>

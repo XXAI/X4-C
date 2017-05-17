@@ -1,0 +1,54 @@
+<div class="modal" [ngClass]="{'is-active': mostrar}">
+    <div class="modal-background" (click)="toggle()"></div>
+    <div class="modal-content">
+
+        <header class="modal-card-head" style="background: white !important;">
+            <p class="modal-card-title"><span class="icon"><i class="fa fa-user-circle"></i></span> Mi cuenta</p>
+            <button class="delete" (click)="toggle()"></button>
+        </header>
+        <section class="modal-card-body has-text-centered">
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <figure class="image is-128x128" style="position:relative;">
+                        <img src="assets/{{ usuario.avatar || 'avatar-unknow' }}.svg" alt="avatar">
+                        <a class="button is-primary is-inverted" style="position: absolute; top: 0px; right:-2em;"><span class="icon"><i class="fa fa-edit"></i></span></a>
+                    </figure>
+
+                </div>
+
+            </nav>
+            <h1 class="title">{{ usuario.nombre }} {{ usuario.apellidos }}</h1>
+            <h2 class="subtitle"><span class="icon"><i class="fa fa-user-circle"></i></span> {{usuario.id}}</h2>
+
+            <div class="field " *ngIf="usuario.unidades_medicas.length > 0">
+
+                <p class="control is-expanded">
+                    <span class="select is-fullwidth">
+            <select (change)="seleccionarClues($event.target.value)">
+              <option *ngFor="let um of usuario.unidades_medicas" value="{{ um.clues }}" [selected]="usuario.clues_activa && usuario.clues_activa.clues== um.clues">{{ um.clues }} {{ um.nombre}}</option>
+            </select>
+          </span>
+                </p>
+            </div>
+
+            <div class="field" *ngIf="usuario.clues_activa && usuario.clues_activa.almacenes && usuario.clues_activa.almacenes.length > 0">
+                <p class="control is-expanded">
+                    <span class="select is-fullwidth">
+
+            <select (change)="seleccionarAlmacen($event.target.value)">
+              <option *ngFor="let almacen of usuario.clues_activa.almacenes" value="{{ almacen.id }}" [selected]="usuario.almacen_activo.id== almacen.id">{{ almacen.nombre }}</option>
+            </select>
+          </span>
+                </p>
+            </div>
+            <a *ngIf="mostrarCambiarEntorno" class="button  is-medium is-fullwidth is-primary" (click)="cambiarEntorno()"><span class="icon"><i class="fa fa-exchange"></i></span><span>Cambiar entorno</span></a>
+
+
+        </section>
+        <footer class="modal-card-foot">
+            <a class="button  is-medium is-fullwidth " (click)="bloquear()"><span class="icon"><i class="fa fa-lock"></i></span><span>Bloquear aplicación</span></a>
+            <a class="button is-danger is-medium is-fullwidth is-outlined" (click)="logout()"><span class="icon"><i class="fa fa-sign-out"></i></span><span>Cerrar sesión</span></a><br>
+
+        </footer>
+    </div>
+</div>
