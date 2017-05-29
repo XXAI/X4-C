@@ -21,7 +21,7 @@ export class HubComponent implements OnInit {
       ] 
     },*/
     { 
-      title:'Admisiones', routerLink:'/admision', icono:'assets/hub-administrador-central.svg',
+      title:'Pacientes', routerLink:'/paciente', icono:'assets/avatar-enfermero.svg',
       permisos: [
         'Zz02R1xvYQBSBx35Bs45F7komHUnvBet', // Ver admision
       ] 

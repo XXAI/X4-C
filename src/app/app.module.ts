@@ -23,7 +23,9 @@ import { BloquearPantallaModule } from './bloquear-pantalla/bloquear-pantalla.mo
 import { PipesModule }             from './pipes/pipes.module';
 
 // # Admisión
-import { AdmisionModule } from './admision/admision.module';
+import { EgresoModule } from './admision/egreso/egreso.module';
+import { PacienteModule } from './admision/paciente/paciente.module';
+
 
 // # Hub Panel de control
 import { UsuariosModule } from './panel-control/usuarios/usuarios.module';
@@ -59,7 +61,8 @@ import { CrudModule } from './crud/crud.module';
     SyncModule,
     RolesModule,
     UsuariosModule,
-    AdmisionModule,
+    PacienteModule,
+    EgresoModule,
     CrudModule,
     WildcardRoutingModule, // Este siempre debe ir al final para que no haga conflicto con otras rutas
     
