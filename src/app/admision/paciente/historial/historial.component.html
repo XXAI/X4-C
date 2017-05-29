@@ -65,6 +65,9 @@
 
                         <td style="vertical-align: middle;" *ngIf="item['motivo_egreso']">{{item['motivo_egreso']['descripcion'] }}</td>
                         <th style="vertical-align: middle;" *ngIf="!item['motivo_egreso']">--</th>
+
+                        <td style="vertical-align: middle;" *ngIf="item['unidad']">{{item['unidad']['nombre'] }}</td>
+                        <th style="vertical-align: middle;" *ngIf="!item['unidad']">--</th>
                         
                         
                         

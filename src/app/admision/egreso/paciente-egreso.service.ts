@@ -30,11 +30,11 @@ export class PacienteEgresoService {
     }
 
   	
-  	listaMunicipios(municipio: number): Observable<any>{
+  	listaMunicipios(municipio: number=null): Observable<any>{
 	    return this.jwtRequest.get("municipio",municipio,null).map( (response: Response) => response.json().data);
 	  }
 
-  	listaLocalidades(municipio: number, localidad:number): Observable<any>{
+  	listaLocalidades(municipio: number=null, localidad:number=null): Observable<any>{
   	    return this.jwtRequest.get("localidad",localidad,{municipio_id: municipio}).map( (response: Response) => response.json().data);
   	}
 

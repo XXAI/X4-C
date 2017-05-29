@@ -36,6 +36,7 @@ export class IngresoComponent implements OnInit {
   private nombre_paciente:string;
   private localidad_paciente:string;
 
+  private verForm:boolean = false;
   // # SECCION: Esta sección es para mostrar mensajes
   mensajeError: Mensaje = new Mensaje()
   mensajeAdvertencia: Mensaje = new Mensaje()
@@ -62,8 +63,6 @@ export class IngresoComponent implements OnInit {
   	this.title.setTitle("Ingreso Paciente / Admisión");
 
   	this.pacienteIngreso = this.fb.group({
-      id: ['', []],
-      nombre: ['', [Validators.required]],
       referido: ['2', [Validators.required]],
       unidad_referido: ['', [Validators.required]],
       urgencia_calificada: ['1', [Validators.required]],
@@ -84,6 +83,18 @@ export class IngresoComponent implements OnInit {
 
   }
 
+  bloquea_formulario()
+  {
+      this.verForm = !this.verForm;
+      if(this.verForm)
+      {
+        this.pacienteIngreso.patchValue({registro_triage:2, estado_triage_id:1,grado_lesion_id:0});
+      }else
+      {
+        this.pacienteIngreso.patchValue({registro_triage:2, estado_triage_id:1,grado_lesion_id:1});
+      }
+  }
+
   valida_referido(valor)
   {
     if(valor==1)
@@ -100,6 +111,7 @@ export class IngresoComponent implements OnInit {
 
   CargarUnidadesMedicas(lista_completa, id){
     this.cargandoUnidadesMedicas = true;
+    console.log(lista_completa+" - "+id);
     this.pacienteEgresoService.listaUnidades(lista_completa, id).subscribe(
       UnidadesMedicas => {
         this.UnidadesMedicas = UnidadesMedicas;
@@ -181,10 +193,6 @@ export class IngresoComponent implements OnInit {
              triage = pacienteIngreso['ingresoactivos'][0].estado_triage_id;
              lesion = pacienteIngreso['ingresoactivos'][0].grado_lesion_id;
 
-             this.CargarUnidadesMedicas(1, unidad);
-             this.CargarLugarTriage(triage);
-             this.CargarGradoLesion(lesion);
-
              this.pacienteIngreso.patchValue(pacienteIngreso);
 
              identificador = pacienteIngreso['id'];
@@ -210,6 +218,10 @@ export class IngresoComponent implements OnInit {
               this.pacienteIngreso.patchValue({fecha_ingreso : date.toJSON().slice(0,10), hora_ingreso: hora+":"+minutos});
               this.pacienteIngreso.patchValue({unidad_referido:"CSSS"});
           }
+
+            this.CargarUnidadesMedicas(1, unidad);
+            this.CargarLugarTriage(triage);
+            this.CargarGradoLesion(lesion);
 
             this.id_paciente = identificador;
             this.nombre_paciente = nombre_paciente;

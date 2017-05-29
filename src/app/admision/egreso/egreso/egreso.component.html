@@ -62,7 +62,7 @@
                     </p>
                     <p class="control is-expanded has-icon has-icon-right">
                       <label class="label">Fecha de egreso</label>    
-                        <input class="input" type="text" placeholder="aaaa-mm-dd" formControlName="fecha_egreso"> 
+                        <input class="input" type="text" placeholder="aaaa-mm-dd" formControlName="fecha_egreso"  readonly="readonly"> 
                         <span class="icon is-small" *ngIf="pacienteEgreso.get('fecha_egreso').hasError('required') && pacienteEgreso.get('fecha_egreso').touched">
                             <i class="fa fa-warning"></i>
                           </span>
@@ -70,7 +70,7 @@
                     </p>
                     <p class="control is-expanded has-icon has-icon-right">
                       <label class="label">hora de egreso</label>    
-                        <input class="input" type="text" placeholder="00:00" formControlName="hora_egreso">
+                        <input class="input" type="text" placeholder="00:00" formControlName="hora_egreso" readonly="readonly">
                         <span class="icon is-small" *ngIf="pacienteEgreso.get('hora_egreso').hasError('required') && pacienteEgreso.get('hora_egreso').touched">
                             <i class="fa fa-warning"></i>
                           </span>
@@ -97,7 +97,7 @@
                       <label class="label">Unidad Contrareferencia</label> 
                       <span class="select is-fullwidth">
                             <select  formControlName="unidad_referencia" name="unidad_referencia" >
-                                <option *ngFor="let item of UnidadesMedicas" value="{{item.clues}}">{{ item.clues }} - {{ item.nombre }}</option>
+                                <option *ngFor="let item of UnidadesMedicas" value="{{item.clues}}">{{ item.nombre }} - {{ item.clues }}</option>
                             </select>
                             
                         </span> 

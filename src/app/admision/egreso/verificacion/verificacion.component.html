@@ -61,13 +61,13 @@
                         <td style="vertical-align: middle;"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{ item.nombre }}</a></td>
                         <td style="vertical-align: middle;"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{ item.fecha_nacimiento }}</a></td>
                         <td style="vertical-align: middle;" *ngIf="item.localidad"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{item.localidad.nombre }} ( {{item.localidad.municipio.nombre }} ) </a></td>
-                        <td style="vertical-align: middle;" *ngIf="item.ingreso.length == 1"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{item.ingreso[0].fecha_hora_ingreso}} </a></td>
-                        <td style="vertical-align: middle;" *ngIf="item.ingreso.length == 1"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">SI </a></td>
-                        <td style="vertical-align: middle;" *ngIf="item.ingreso.length == 1"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{ item.ingreso[0].unidad.nombre}} </a></td>
+                        <td style="vertical-align: middle;" *ngIf="item.ingresoactivos.length == 1"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{item.ingresoactivos[0].fecha_hora_ingreso}} </a></td>
+                        <td style="vertical-align: middle;" *ngIf="item.ingresoactivos.length == 1"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">SI </a></td>
+                        <td style="vertical-align: middle;" *ngIf="item.ingresoactivos.length == 1"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">{{ item.ingresoactivos[0].unidad.nombre}} </a></td>
                         <td style="vertical-align: middle;" *ngIf="!item.localidad"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">DESCONOCIDO</a></td>
-                        <td style="vertical-align: middle;" *ngIf="item.ingreso.length == 0"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}"> </a></td>
-                        <td style="vertical-align: middle;" *ngIf="item.ingreso.length == 0"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">NO </a></td>
-                        <td style="vertical-align: middle;" *ngIf="item.ingreso.length == 0"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}"> </a></td>
+                        <td style="vertical-align: middle;" *ngIf="item.ingresoactivos.length == 0"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}"> </a></td>
+                        <td style="vertical-align: middle;" *ngIf="item.ingresoactivos.length == 0"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}">NO </a></td>
+                        <td style="vertical-align: middle;" *ngIf="item.ingresoactivos.length == 0"><a routerLink="/pacientes/modulo/ingreso/{{item.id}}"> </a></td>
                         <td style="vertical-align: middle;" class="has-text-centered"><span class="icon " *ngIf="item.cargando"><i class="fa fa-circle-o-notch fa-spin"></i></span><a *ngIf="!item.cargando" class="is-primary" routerLink="/pacientes/modulo/ingreso/{{item.id}}"><span class="icon"><i class="fa fa-hospital-o"></i></span></a></td>
                         
                     </tr>

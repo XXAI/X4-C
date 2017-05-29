@@ -49,7 +49,7 @@ export class HistorialComponent implements OnInit {
 	private indicePaginas:number[] = []
 	// # FIN SECCION
 
-	  private id_paciente:string;
+	  private id_paciente:number;
 	  private nombre_paciente:string;
 	  private localidad_paciente:string;
 	
@@ -90,11 +90,11 @@ export class HistorialComponent implements OnInit {
         resultado => {
 
           this.cargando = false;
-          console.log(resultado);
           this.pacientes = resultado['ingreso'] as Paciente[];
           
-
-          	//this.id_paciente = resultado['id'];
+         console.log(resultado['id']);
+           
+        this.id_paciente = resultado['id'];
 	  		this.nombre_paciente = resultado['nombre'];
 	  		this.localidad_paciente = resultado['localidad']['nombre']+" ( "+resultado['localidad']['municipio']['nombre']+" )";
         },

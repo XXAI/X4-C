@@ -42,6 +42,14 @@ export class VerificacionComponent implements OnInit {
     mensajeError: Mensaje = new Mensaje();
 	mensajeExito: Mensaje = new Mensaje();
 	ultimaPeticion:any;
+
+
+	cargandoMunicipios: boolean = false;
+	cargandoLocalidades: boolean = false;
+	
+	  //roles: Rol[] = [];
+	Municipios: any[] = [];
+	Localidades: any[] = [];
 	// # FIN SECCION
 
 	// # SECCION: Lista de pacinetes
@@ -164,7 +172,39 @@ export class VerificacionComponent implements OnInit {
 	      }
 
 	    );
+
+	    this.cargarMunicipios(); 
 	}
+
+
+	cargarMunicipios(){
+    this.cargandoMunicipios = true;
+    this.PacienteEgresoService.listaMunicipios().subscribe(
+      municipio => {
+        this.Municipios = municipio;
+        this.cargandoMunicipios = false;
+        console.log("Municipios cargados")
+      }, error => {
+        this.cargandoMunicipios = false;
+      }
+
+    );
+  }
+
+  cargarLocalidades(value){
+    this.cargandoLocalidades = true;
+    this.PacienteEgresoService.listaLocalidades(value).subscribe(
+      localidad => {
+        this.Localidades = localidad;
+        this.cargandoLocalidades = false;
+        console.log("Localidades cargados")
+      }, error => {
+        this.cargandoLocalidades = false;
+      }
+
+    );
+    
+  }
 
 	buscar(term: string): void {
 	    this.terminosBusqueda.next(term);
@@ -298,9 +338,16 @@ export class VerificacionComponent implements OnInit {
     	}
 
     	if(this.verFormResponsable && this.verForm)
+    	{
     		this.verFormArea = false;
+    		this.paciente.patchValue({area:""});
+    	}
     	else
+    	{
     		this.verFormArea = true;
+
+    		this.paciente.patchValue({area:1});
+    	}
     	
     } 
 
@@ -326,9 +373,15 @@ export class VerificacionComponent implements OnInit {
     	}
 
     	if(this.verFormResponsable && this.verForm)
+    	{
     		this.verFormArea = false;
+    		this.paciente.patchValue({area:""});
+    	}
     	else
-    		this.verFormArea = true;    	
+    	{
+    		this.verFormArea = true; 
+    		this.paciente.patchValue({area:1});   	
+    	}
     }
 
      verifica_area()

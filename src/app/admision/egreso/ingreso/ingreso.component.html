@@ -60,7 +60,7 @@
                         <label class="label">Unidad Referida</label>
                       	<span class="select is-fullwidth">
                           <select  formControlName="unidad_referido" name="unidad_referido">
-                              <option *ngFor="let item of UnidadesMedicas" value="{{item.clues}}">{{ item.clues }} - {{ item.nombre }}</option>
+                              <option *ngFor="let item of UnidadesMedicas" value="{{item.clues}}">{{ item.nombre }} - {{ item.clues }}</option>
                           </select>
                         </span>
     	                  <span class="icon is-small" *ngIf="pacienteIngreso.get('unidad_referido').hasError('required') && pacienteIngreso.get('unidad_referido').touched">
@@ -74,7 +74,7 @@
                     <p class="control is-expanded  has-icon has-icon-right">
                         <label class="label">Urgencia Calificada</label>
                         <span class="select is-fullwidth">
-                          <select  formControlName="urgencia_calificada" name="urgencia_calificada" >
+                          <select  formControlName="urgencia_calificada" name="urgencia_calificada" (change)="bloquea_formulario()" >
                             <option value="1" selected="selected">SI</option>
                             <option value="2">NO</option>
                           </select>
@@ -84,7 +84,8 @@
                       </span>
                       <span class="help is-danger" *ngIf="pacienteIngreso.get('urgencia_calificada').hasError('required') && pacienteIngreso.get('urgencia_calificada').touched">Este campo es requerido.</span>                     
                     </p>
-                    <p class="control is-expanded  has-icon has-icon-right">
+
+                    <p class="control is-expanded  has-icon has-icon-right" [hidden]="verForm">
                         <label class="label">Triage Obstetrico</label>
                         <span class="select is-fullwidth">
                           <select  formControlName="registro_triage" name="registro_triage" #registro_triage >
@@ -97,7 +98,7 @@
                       </span>
                       <span class="help is-danger" *ngIf="pacienteIngreso.get('registro_triage').hasError('required') && pacienteIngreso.get('registro_triage').touched">Este campo es requerido.</span>                     
                     </p>
-                    <p class="control is-expanded  has-icon has-icon-right">
+                    <p class="control is-expanded  has-icon has-icon-right" [hidden]="verForm">
                         <label class="label">Lugar donde se encuentra</label>
                         <span class="select is-fullwidth">
                           <select  formControlName="estado_triage_id" name="estado_triage_id">
@@ -109,7 +110,7 @@
                       </span>
                       <span class="help is-danger" *ngIf="pacienteIngreso.get('estado_triage_id').hasError('required') && pacienteIngreso.get('estado_triage_id').touched">Este campo es requerido.</span>                     
                     </p>
-                     <p class="control is-expanded  has-icon has-icon-right">
+                     <p class="control is-expanded  has-icon has-icon-right" [hidden]="verForm">
                         <label class="label">Grado de Lesión</label>
                         <span class="select is-fullwidth">
                           <select  formControlName="grado_lesion_id" name="grado_lesion_id" >
@@ -121,18 +122,18 @@
                       </span>
                       <span class="help is-danger" *ngIf="pacienteIngreso.get('grado_lesion_id').hasError('required') && pacienteIngreso.get('grado_lesion_id').touched">Este campo es requerido.</span>                     
                     </p>
-                    <p class="control is-expanded  has-icon has-icon-right">
+                    <p class="control is-expanded  has-icon has-icon-right" [hidden]="verForm">
                         <label class="label">Fecha de ingreso</label>
-                        <input class="input"  type="text" name="fecha_ingreso" formControlName="fecha_ingreso" placeholder="aaaa-mm-dd">
+                        <input class="input"  type="text" name="fecha_ingreso" formControlName="fecha_ingreso" placeholder="aaaa-mm-dd" readonly="readonly">
                           <span class="icon is-small" *ngIf="pacienteIngreso.get('fecha_ingreso').hasError('required') && pacienteIngreso.get('fecha_ingreso').touched">
                             <i class="fa fa-warning"></i>
                           </span>
                           <span class="help is-danger" *ngIf="pacienteIngreso.get('fecha_ingreso').hasError('required') && pacienteIngreso.get('fecha_ingreso').touched">Este campo es requerido.</span>
                          
                     </p>
-                    <p class="control is-expanded  has-icon has-icon-right">
+                    <p class="control is-expanded  has-icon has-icon-right" [hidden]="verForm">
                         <label class="label">Hora de ingreso</label>
-                        <input class="input"  type="text" name="hora_ingreso" formControlName="hora_ingreso" placeholder="HH:mm">
+                        <input class="input"  type="text" name="hora_ingreso" formControlName="hora_ingreso" placeholder="HH:mm" readonly="readonly">
                           <span class="icon is-small" *ngIf="pacienteIngreso.get('hora_ingreso').hasError('required') && pacienteIngreso.get('hora_ingreso').touched">
                             <i class="fa fa-warning"></i>
                           </span>
